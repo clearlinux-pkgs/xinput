@@ -4,7 +4,7 @@
 #
 Name     : xinput
 Version  : 1.6.2
-Release  : 1
+Release  : 2
 URL      : https://www.x.org/releases/individual/app/xinput-1.6.2.tar.bz2
 Source0  : https://www.x.org/releases/individual/app/xinput-1.6.2.tar.bz2
 Summary  : No detailed summary available
