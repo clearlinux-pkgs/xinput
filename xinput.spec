@@ -6,10 +6,10 @@
 #
 Name     : xinput
 Version  : 1.6.3
-Release  : 3
+Release  : 4
 URL      : https://www.x.org/releases/individual/app/xinput-1.6.3.tar.bz2
 Source0  : https://www.x.org/releases/individual/app/xinput-1.6.3.tar.bz2
-Source1 : https://www.x.org/releases/individual/app/xinput-1.6.3.tar.bz2.sig
+Source1  : https://www.x.org/releases/individual/app/xinput-1.6.3.tar.bz2.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
@@ -60,21 +60,21 @@ man components for the xinput package.
 
 %prep
 %setup -q -n xinput-1.6.3
+cd %{_builddir}/xinput-1.6.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570926936
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1604442112
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
@@ -84,13 +84,13 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1570926936
+export SOURCE_DATE_EPOCH=1604442112
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xinput
-cp COPYING %{buildroot}/usr/share/package-licenses/xinput/COPYING
+cp %{_builddir}/xinput-1.6.3/COPYING %{buildroot}/usr/share/package-licenses/xinput/c67b9687eea0526456367a5007e4f20fedf99eab
 %make_install
 
 %files
@@ -102,7 +102,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/xinput/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/xinput/COPYING
+/usr/share/package-licenses/xinput/c67b9687eea0526456367a5007e4f20fedf99eab
 
 %files man
 %defattr(0644,root,root,0755)
